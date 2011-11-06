@@ -1,0 +1,9 @@
+{% extends 'WebdevBlogBundle::layout.html.twig' %}
+
+{% block content %}
+
+	<h2>{{ post.title }}</h2>
+	<p>{{ post.content | raw }}</p>
+	<p>Klicks: <span>{{ post.clicks }}</span></p>
+
+{% endblock %}

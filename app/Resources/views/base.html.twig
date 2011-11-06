@@ -2,11 +2,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}webdevsblog{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    	<h1>webdev's Blog</h1>
+    	<hr/>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

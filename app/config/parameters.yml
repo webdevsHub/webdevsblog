@@ -4,7 +4,7 @@ parameters:
     database_port: null
     database_name: webdevsblog
     database_user: root
-    database_password: mysql
+    database_password:
     mailer_transport: smtp
     mailer_host: localhost
     mailer_user: null
