@@ -26,3 +26,19 @@
 	{% block content %}{% endblock %}
 
 {% endblock %}
+
+{% block stylesheets %}
+
+	{{ parent() }}
+	
+	{% stylesheets
+		'@WebdevBlogBundle/Resources/public/css/layout.css'
+		output='resources/compiled/layout.css'
+		filter='yui_css'
+	%}
+			
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+			
+	{% endstylesheets %}
+
+{% endblock %}

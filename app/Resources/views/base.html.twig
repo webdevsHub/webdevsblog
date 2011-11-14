@@ -4,7 +4,17 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>{% block title %}{% endblock %} - webdev's Blog</title>
 		{% block stylesheets %}
-			<link href="main.css" rel="stylesheet" type="text/css">
+		
+			{% stylesheets
+				'resources/css/base.css'
+				output='resources/compiled/base.css'
+				filter='yui_css'
+			%}
+			
+				<link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+			
+			{% endstylesheets %}
+			
 		{% endblock %}
 		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 	</head>
@@ -16,8 +26,8 @@
 					<p class="left">Dein Computer ist nach zwei Jahren völlig veraltet. Dein Browser nach zwei Monaten.</p>
 				</div>
 				<div id="header_font_size" class="small no_margin">
-					<a href="javascript:;" onclick="changeFontSize('-');"><img src="fontname_16x16.png"/></a>
-					<a href="javascript:;" onclick="changeFontSize('+');"><img src="fontname_26x26.png"/></a>
+					<a href="javascript:;" onclick="changeFontSize('-');"><img src="{{ asset('resources/images/fontname_16x16.png') }}"/></a>
+					<a href="javascript:;" onclick="changeFontSize('+');"><img src="{{ asset('resources/images/fontname_26x26.png') }}"/></a>
 				</div>
 				<ul id="header_links" class="small no_margin">
 					<li><a href="">Twitter</a></li>
@@ -30,8 +40,18 @@
 			</div>
 	    </div>
 	    {% block javascripts %}
-			<script type="text/javascript" src="./jquery-1.7.js"></script>
-			<script type="text/javascript" src="./base.js"></script>
+	    
+	    	{% javascripts
+	    		'resources/js/jquery-1.7.js'
+	    		'resources/js/base.js'
+	    		output='resources/compiled/base.js'
+	    		filter='yui_js'
+	    	%}
+	    	
+	    		<script type="text/javascript" src="{{ asset_url }}"></script>
+	    	
+	    	{% endjavascripts %}
+	    
 		{% endblock %}
 	</body>
 </html>

@@ -1,5 +1,9 @@
 {% extends 'WebdevBlogBundle::layout.html.twig' %}
 
+{% block title %}
+	{{ post.title }}
+{% endblock %}
+
 {% block content %}
 
 	<div id="blog_post_metadata" class="left small">
@@ -7,15 +11,15 @@
 			<tbody>
 				<tr>
 					<td>Erstellt am</td>
-					<td>28.10.2011</td>
+					<td>{{ post.createdAt | date('d.m.Y') }}</td>
 				</tr>
 				<tr>
 					<td>Geändert am</td>
-					<td>28.10.2011</td>
+					<td>{{ post.updatedAt | date('d.m.Y') }}</td>
 				</tr>
 				<tr>
 					<td>Klicks</td>
-					<td>20</td>
+					<td>{{ post.clicks }}</td>
 				</tr>
 				<tr>
 					<td>Kommentare</td>
@@ -30,7 +34,7 @@
 		</ul>
 	</div>
 
-	<h2 class="no_margin">webdev's Blog - symfony 2 Tutorial</h2>
+	<h2 class="no_margin">{{ post.title }}</h2>
 	<p id="blog_post_tags" class="small no_margin">Tags: <a href="">Lorem</a>, <a href="">Ipsum</a>, <a href="">dolor</a></p>
 	{{ post.content | raw }}
 	
@@ -59,5 +63,21 @@
 		<p class="blog_post_comment_header">Max Mustermann am 30.10.2011 um 19:05 Uhr (5 Antworten) | <a href="">Antworten einblenden</a></p>
 		<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
 	</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+	{{ parent() }}
+	
+	{% stylesheets
+		'@WebdevBlogBundle/Resources/public/css/post/view.css'
+		output='resources/compiled/view.css'
+		filter='yui_css'
+	%}
+			
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+			
+	{% endstylesheets %}
 
 {% endblock %}

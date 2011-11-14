@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Webdev\BlogBundle\Entity\PostRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Post
 {
@@ -69,14 +68,6 @@ class Post
     	$this->created_at = new \DateTime();
     	$this->updated_at = new \DateTime();
     	$this->clicks = 0;
-    }
-    
-    /**
-     * @ORM\PreUpdate()
-     */
-    public function onUpdate()
-    {
-    	$this->updated_at = new \DateTime();
     }
 
     /**
