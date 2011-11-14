@@ -1,15 +1,37 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}webdevsblog{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-    	<h1>webdev's Blog</h1>
-    	<hr/>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{% block title %}{% endblock %} - webdev's Blog</title>
+		{% block stylesheets %}
+			<link href="main.css" rel="stylesheet" type="text/css">
+		{% endblock %}
+		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div id="header_text">
+					<h1 class="left">webdev's Blog</h1>
+					<p class="left">Dein Computer ist nach zwei Jahren völlig veraltet. Dein Browser nach zwei Monaten.</p>
+				</div>
+				<div id="header_font_size" class="small no_margin">
+					<a href="javascript:;" onclick="changeFontSize('-');"><img src="fontname_16x16.png"/></a>
+					<a href="javascript:;" onclick="changeFontSize('+');"><img src="fontname_26x26.png"/></a>
+				</div>
+				<ul id="header_links" class="small no_margin">
+					<li><a href="">Twitter</a></li>
+					<li><a href="">GitHub</a></li>
+					<li><a href="">Impressum</a></li>
+				</ul>
+			</div>
+			<div id="body">
+				{% block body %}{% endblock %}
+			</div>
+	    </div>
+	    {% block javascripts %}
+			<script type="text/javascript" src="./jquery-1.7.js"></script>
+			<script type="text/javascript" src="./base.js"></script>
+		{% endblock %}
+	</body>
 </html>

@@ -2,8 +2,62 @@
 
 {% block content %}
 
-	<h2>{{ post.title }}</h2>
-	<p>{{ post.content | raw }}</p>
-	<p>Klicks: <span>{{ post.clicks }}</span></p>
+	<div id="blog_post_metadata" class="left small">
+		<table>
+			<tbody>
+				<tr>
+					<td>Erstellt am</td>
+					<td>28.10.2011</td>
+				</tr>
+				<tr>
+					<td>Geändert am</td>
+					<td>28.10.2011</td>
+				</tr>
+				<tr>
+					<td>Klicks</td>
+					<td>20</td>
+				</tr>
+				<tr>
+					<td>Kommentare</td>
+					<td>10</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Trackbacks (<a href="">URL</a>)</p>
+		<ul class="no_margin">
+			<li><a href="">Lorem Ipsum</a></li>
+			<li><a href="">Lorem Ipsum dolor</a></li>
+		</ul>
+	</div>
+
+	<h2 class="no_margin">webdev's Blog - symfony 2 Tutorial</h2>
+	<p id="blog_post_tags" class="small no_margin">Tags: <a href="">Lorem</a>, <a href="">Ipsum</a>, <a href="">dolor</a></p>
+	{{ post.content | raw }}
+	
+	<h3 class="no_margin clear">Kommentare</h3>
+	<hr class="no_margin"/>
+	<div id="blog_post_comment_new">
+		<p>Wenn du auch einen Kommentar schreiben möchtest, melde dich bitte <a href="">hier</a> an.</p>
+	</div>
+	<div class="blog_post_comment">
+		<p class="blog_post_comment_header">Max Mustermann am 30.10.2011 um 19:05 Uhr (3 Antworten) | <a href="">Antworten ausblenden</a></p>
+		<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+		<div class="blog_post_comment blog_post_comment_answer">
+			<p class="blog_post_comment_header">Ulfi am 30.10.2011 um 19:10 Uhr (1 Antwort)</p>
+			<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+			<div class="blog_post_comment blog_post_comment_answer">
+				<p class="blog_post_comment_header">Max Mustermann am 30.10.2011 um 19:11 Uhr</p>
+				<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+			</div>
+		</div>
+		<div class="blog_post_comment blog_post_comment_answer">
+			<p class="blog_post_comment_header">Lotti am 30.10.2011 um 19:15 Uhr</p>
+			<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+		</div>
+	</div>
+	<div class="blog_post_comment">
+		<p class="blog_post_comment_header">Max Mustermann am 30.10.2011 um 19:05 Uhr (5 Antworten) | <a href="">Antworten einblenden</a></p>
+		<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+	</div>
 
 {% endblock %}
