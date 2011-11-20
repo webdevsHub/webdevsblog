@@ -3,6 +3,11 @@
 	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
 }
 
+pre
+{
+	font-family: monospace;
+}
+
 /*
  * global classes
  */

@@ -7,6 +7,7 @@ div#blog_sidebar
     margin-bottom: 10px;
     margin-left: 20px;
     padding: 10px;
+    width: 170px;
 }
 
 div#blog_sidebar p
@@ -25,4 +26,21 @@ div#blog_sidebar ul
 	list-style-type: none;
     margin-top: 10px;
     padding-left: 15px;
+}
+
+/*
+ * tags
+ */
+ul#tags
+{
+	font-size: 12px;
+	padding-left: 5px !important;
+	padding-right: 5px;
+}
+
+ul#tags li
+{
+	display: inline;
+	margin: 3px;
+	white-space: nowrap;
 }
