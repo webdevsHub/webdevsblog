@@ -1,0 +1,16 @@
+{% extends 'WebdevBlogBundle::layout.html.twig' %}
+
+{% block title %}
+	Tag: {{ tag.name }}
+{% endblock %}
+
+{% block content %}
+	
+	<h2>Posts für "{{ tag.name }}"</h2>
+	{% for post in tag.posts %}
+		{% include 'WebdevBlogBundle:Post:postPreview.html.twig' with { 'post': post } %}
+	{% else %}
+		<p>Keine Posts zugeordnet.</p>		
+	{% endfor %}
+	
+{% endblock %}

@@ -38,9 +38,11 @@
 	<div id="blog_post_tags">
 		<p class="small no_margin left">Tags:</p>
 			<ul class="small no_margin left">
-				<li><a href="">Lorem</a></li>
-				<li><a href="">Ipsum</a></li>
-				<li><a href="">dolor</a></li>
+				{% for tag in post.tags %}
+					<li><a href="{{ path('blog_search_tag', { 'name': tag.name }) }}">{{ tag.name }}</a></li>
+				{% else %}
+					<li>Keine Tags vorhanden.</li>
+				{% endfor %}
 			</ul>
 	</div>
 	<div id="blog_post_content">

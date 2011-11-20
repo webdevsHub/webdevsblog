@@ -1,0 +1,9 @@
+<p>Tagcloud</p>
+<hr/>
+<ul id="tags">
+	{% for tag in tags %}
+		<li style="font-size: {{ tag.quantifier / 10 + 1 }}em"><a href="{{ path('blog_search_tag', { 'name': tag.name }) }}">{{ tag.name }}</a></li>
+	{% else %}
+		<li>Keine Tags vorhanden.</li>
+	{% endfor %}
+</ul>

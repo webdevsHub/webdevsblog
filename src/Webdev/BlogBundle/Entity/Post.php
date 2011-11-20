@@ -2,6 +2,8 @@
 
 namespace Webdev\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -63,11 +65,18 @@ class Post
      */
     private $clicks;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
+     * @ORM\JoinTable(name="post_tags")
+     */
+    private $tags;
+    
     public function __construct()
     {
     	$this->created_at = new \DateTime();
     	$this->updated_at = new \DateTime();
     	$this->clicks = 0;
+    	$this->tags = new ArrayCollection();
     }
 
     /**
@@ -210,5 +219,25 @@ class Post
     public function getClicks()
     {
         return $this->clicks;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param Webdev\BlogBundle\Entity\Tag $tags
+     */
+    public function addTag(\Webdev\BlogBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

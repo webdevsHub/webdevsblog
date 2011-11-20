@@ -14,7 +14,9 @@ class PostControllerTest extends WebTestCase
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/post/symfony2-tutorial');
-        $this->assertEquals($crawler->filterXPath('html/body/div/div[2]/h2')->text(), 'symfony2 Tutorial');        
+        $this->assertEquals($crawler->filterXPath('html/body/div/div[2]/h2')->text(), 'symfony2 Tutorial');
+
+        $this->assertEquals($crawler->filterXPath('html/body/div/div[2]/div[3]/ul/li/a')->text(), 'symfony 2');
     }
     
     /*
