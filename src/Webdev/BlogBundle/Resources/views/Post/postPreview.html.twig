@@ -1,7 +1,5 @@
-<div>
-	<p>{{ post.title }}</p>
-	<p>
-		{{ post.content | striptags | truncate }}<br/>
-		<a href="{{ path('blog_post_view', { 'slug': post.slug }) }}">weiterlesen</a>
-	</p>
+<div class="blog_post_preview">
+	<h3>{{ post.title }}</h3>
+	<p class="small blog_post_preview_meta">&gt; Erstellt am {{ post.createdAt() | date('d.m.Y') }}, Geändert am {{ post.updatedAt() | date('d.m.Y') }}, Kicks: {{ post.clicks }}</p>
+	<p class="no_margin">{{ post.content | striptags | truncate(180) }} <a href="{{ path('blog_post_view', { 'slug': post.slug }) }}">weiterlesen</a></p>
 </div>

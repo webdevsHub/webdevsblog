@@ -19,7 +19,8 @@ class SidebarController extends Controller
     	$em = $this->getDoctrine()->getEntityManager();
     	
     	// get all tags
-    	$tags = $em->getRepository('WebdevBlogBundle:Tag')->findAll();	
+    	$tags = $em->getRepository('WebdevBlogBundle:Tag')->findAll();
+    	shuffle($tags);
     	
         return array('tags' => $tags);
     }

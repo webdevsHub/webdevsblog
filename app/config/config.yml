@@ -23,8 +23,8 @@ twig:
     strict_variables: %kernel.debug%
     
 services:
-    webdevText.twig.extension:
-        class: Webdev\BlogBundle\Extension\WebdevTextExtension
+    text.twig.extension:
+        class: Webdev\BlogBundle\Extension\TextExtension
         tags:
             - { name: twig.extension }
 

@@ -6,11 +6,27 @@
 
 {% block content %}
 	
-	<h2>Posts für "{{ tag.name }}"</h2>
+	<h2>{{ tag.name }}</h2>
 	{% for post in tag.posts %}
 		{% include 'WebdevBlogBundle:Post:postPreview.html.twig' with { 'post': post } %}
 	{% else %}
 		<p>Keine Posts zugeordnet.</p>		
 	{% endfor %}
 	
+{% endblock %}
+
+{% block stylesheets %}
+
+	{{ parent() }}
+	
+	{% stylesheets
+		'@WebdevBlogBundle/Resources/public/css/post/post_preview.css'
+		output='resources/compiled/tag.css'
+		filter='yui_css'
+	%}
+			
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+			
+	{% endstylesheets %}
+
 {% endblock %}

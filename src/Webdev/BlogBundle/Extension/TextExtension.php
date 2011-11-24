@@ -1,11 +1,11 @@
 <?php
 namespace Webdev\BlogBundle\Extension;
 
-class WebdevTextExtension extends \Twig_Extension
+class TextExtension extends \Twig_Extension
 {
 	public function getName()
 	{
-		return 'webdev_text_twig_extension';
+		return 'text_twig_extension';
 	}
 	
 	public function getFilters()
@@ -21,7 +21,7 @@ class WebdevTextExtension extends \Twig_Extension
 			
 			$text = mb_strcut($text, 0, $limit, 'UTF-8');
 			$lastWhitespace = mb_strrpos($text, ' ', 0, 'UTF-8');
-			$text = mb_strcut($text, 0, $lastWhitespace, 'UTF-8') . '...';
+			$text = mb_strcut($text, 0, $lastWhitespace, 'UTF-8');
 			
 		}
 		
