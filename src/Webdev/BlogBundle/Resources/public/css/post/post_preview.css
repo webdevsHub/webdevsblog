@@ -1,0 +1,16 @@
+div.blog_post_preview
+{
+	
+}
+
+div.blog_post_preview h3
+{
+	margin-bottom: 0;
+}
+
+p.blog_post_preview_meta
+{
+	font-style: italic;
+	margin-top: 2px;
+	margin-bottom: 5px;
+}
