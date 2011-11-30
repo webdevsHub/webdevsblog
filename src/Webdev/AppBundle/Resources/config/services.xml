@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="webdev_blog.example.class">Webdev\BlogBundle\Example</parameter>
+        <parameter key="webdev_app.example.class">Webdev\AppBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="webdev_blog.example" class="%webdev_blog.example.class%">
+        <service id="webdev_app.example" class="%webdev_app.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
