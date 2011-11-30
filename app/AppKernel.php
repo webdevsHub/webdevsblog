@@ -21,7 +21,6 @@ class AppKernel extends Kernel
         	new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             
             new Webdev\BlogBundle\WebdevBlogBundle(),
-            new Webdev\AppBundle\WebdevAppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

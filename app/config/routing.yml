@@ -1,8 +1,3 @@
-WebdevAppBundle:
-    resource: "@WebdevAppBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 WebdevBlogBundle:
     resource: "@WebdevBlogBundle/Controller/"
     type:     annotation
