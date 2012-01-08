@@ -26,7 +26,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 	
 	public function getOrder()
 	{
-		return 4;
+		return 2;
 	}
 	
 	public function load($manager)
@@ -54,5 +54,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 		$manager->persist($user2);
 		
 		$manager->flush();
+		
+		$this->addReference('user1', $user1);
+		$this->addReference('user2', $user2);
 	}
 }

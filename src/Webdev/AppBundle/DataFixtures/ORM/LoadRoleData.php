@@ -15,7 +15,7 @@ class LoadRoleData extends AbstractFixture implements OrderedFixtureInterface
 {
 	public function getOrder()
 	{
-		return 3;
+		return 1;
 	}
 	
 	public function load($manager)

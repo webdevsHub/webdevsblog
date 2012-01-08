@@ -52,10 +52,16 @@ class User implements UserInterface
      */
     private $userRoles;
     
+    /**
+	 * @ORM\OneToMany(targetEntity="Webdev\BlogBundle\Entity\Post", mappedBy="user")
+     */
+    private $posts;
+    
     public function __construct()
     {
-    	$this->userRoles = new ArrayCollection();
     	$this->salt = md5(uniqid());
+    	$this->userRoles = new ArrayCollection();
+    	$this->posts = new ArrayCollection();
     }
     
     /*
@@ -170,5 +176,25 @@ class User implements UserInterface
     public function getUserRoles()
     {
         return $this->userRoles;
+    }
+
+    /**
+     * Get posts
+     *
+     * @return Webdev\BlogBundle\Entity\Post 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+     * Add posts
+     *
+     * @param Webdev\BlogBundle\Entity\Post $posts
+     */
+    public function addPost(\Webdev\BlogBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
     }
 }

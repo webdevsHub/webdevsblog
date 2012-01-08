@@ -10,6 +10,10 @@
 		<table>
 			<tbody>
 				<tr>
+					<td>Autor</td>
+					<td>{{ post.user.username }}</td>
+				</tr>
+				<tr>
 					<td>Erstellt am</td>
 					<td>{{ post.createdAt | date('d.m.Y') }}</td>
 				</tr>

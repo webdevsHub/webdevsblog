@@ -71,6 +71,11 @@ class Post
      */
     private $tags;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Webdev\AppBundle\Entity\User", inversedBy="posts")
+     */
+    private $user;
+    
     public function __construct()
     {
     	$this->created_at = new \DateTime();
@@ -239,5 +244,27 @@ class Post
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Webdev\AppBundle\Entity\User $user
+     * @return Post
+     */
+    public function setUser(\Webdev\AppBundle\Entity\User $user)
+    {
+        $this->user = $user;
+        return $this;
     }
 }
