@@ -11,7 +11,7 @@ class TextExtension extends \Twig_Extension
 	public function getFilters()
 	{
 		return array(
-			'truncate' => new \Twig_Filter_Method($this, 'truncate')		
+			'truncate' => new \Twig_Filter_Method($this, 'truncate')	
 		);
 	}
 	

@@ -22,20 +22,22 @@
 		<div id="container">
 			<div id="header">
 				<div id="header_text">
-					<h1 class="left">webdev's Blog</h1>
-					<p class="left">Dein Computer ist nach zwei Jahren völlig veraltet. Dein Browser nach zwei Monaten.</p>
+					<h1>webdev's Blog</h1>
+					<p>Dein Computer ist nach zwei Jahren völlig veraltet. Dein Browser nach zwei Monaten.</p>
 				</div>
-				<div id="header_font_size" class="small no_margin">
+				<div id="header_font_size" class="no_margin">
 					<a href="javascript:;" onclick="changeFontSize('-');"><img src="{{ asset('resources/images/fontname_16x16.png') }}"/></a>
 					<a href="javascript:;" onclick="changeFontSize('+');"><img src="{{ asset('resources/images/fontname_26x26.png') }}"/></a>
 				</div>
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<div id="header_accountbox" class="no_margin">
+					Eingeloggt als {{ app.user.username }} | <a href="{{ path('logout') }}">Logout</a>
+				</div>
+				{% endif %}
 				<ul id="header_links" class="small no_margin">
 					<li><a href="">Twitter</a></li>
 					<li><a href="">GitHub</a></li>
 					<li><a href="">Impressum</a></li>
-					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						<li><a href="{{ path('logout') }}">Logout</a></li>
-					{% endif %}
 				</ul>
 			</div>
 			<div id="body">
