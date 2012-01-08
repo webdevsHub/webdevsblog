@@ -29,7 +29,7 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
 		$post1->addTag($this->getReference('tag1'));
 		$post1->addTag($this->getReference('tag2'));
 		$post1->addTag($this->getReference('tag3'));
-		$post1->setUser($this->getReference('user2'));
+		$post1->setUser($this->getReference('admin'));
 		
 		$post2 = new Post();
 		$post2->setTitle('Assetic und Doctrine 2');
@@ -39,7 +39,7 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
 		$post2->addTag($this->getReference('tag4'));
 		$post2->addTag($this->getReference('tag5'));
 		$post2->addTag($this->getReference('tag6'));
-		$post2->setUser($this->getReference('user2'));
+		$post2->setUser($this->getReference('admin'));
 		
 		$post3 = new Post();
 		$post3->setTitle('Happy Hacking with symfony');
@@ -49,12 +49,16 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
 		$post3->addTag($this->getReference('tag6'));
 		$post3->addTag($this->getReference('tag2'));
 		$post3->addTag($this->getReference('tag5'));
-		$post3->setUser($this->getReference('user2'));
+		$post3->setUser($this->getReference('admin'));
 		
 		$manager->persist($post1);
 		$manager->persist($post2);
 		$manager->persist($post3);
 		
 		$manager->flush();
+		
+		$this->addReference('post1', $post1);
+		$this->addReference('post2', $post2);
+		$this->addReference('post3', $post3);
 	}
 }

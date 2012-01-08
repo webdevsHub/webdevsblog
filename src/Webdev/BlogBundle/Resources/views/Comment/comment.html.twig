@@ -1,0 +1,18 @@
+<p class="blog_post_comment_header">
+	{{ comment.user.username }} 
+	<span class="small italic">({{ comment.createdAt | comment_date }})</span>
+	{% if comment.answers | length > 0 %}
+		<span class="right">
+			{{ comment.answers | length }} {{ comment.answers | length > 1 ? 'Antworten' : 'Antwort' }} | 
+			<a href="javascript:;" onclick="toggleCommentAnswers('{{ comment.id }}')">einblenden</a>
+		</span>
+	{% endif %}
+</p>
+
+<p class="blog_post_comment_body">{{ comment.content }}</p>
+
+{% for answer in comment.answers %}
+<div id="comment_{{ answer.id }}" class="blog_post_comment blog_post_comment_answer">
+	{% include 'WebdevBlogBundle:Comment:comment.html.twig' with { 'comment': answer } %}
+</div>
+{% endfor %}

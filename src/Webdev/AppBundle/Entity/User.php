@@ -57,11 +57,17 @@ class User implements UserInterface
      */
     private $posts;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Webdev\BlogBundle\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+    
     public function __construct()
     {
     	$this->salt = md5(uniqid());
     	$this->userRoles = new ArrayCollection();
     	$this->posts = new ArrayCollection();
+    	$this->comments = new ArrayCollection();
     }
     
     /*
@@ -196,5 +202,25 @@ class User implements UserInterface
     public function addPost(\Webdev\BlogBundle\Entity\Post $posts)
     {
         $this->posts[] = $posts;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Webdev\BlogBundle\Entity\Comment $comments
+     */
+    public function addComment(\Webdev\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

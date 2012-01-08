@@ -6,6 +6,7 @@
 
 {% block content %}
 
+	{# meta data #}
 	<div id="blog_post_metadata" class="left small">
 		<table>
 			<tbody>
@@ -27,7 +28,7 @@
 				</tr>
 				<tr>
 					<td>Kommentare</td>
-					<td>10</td>
+					<td>{{ post.comments | length }}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -38,6 +39,7 @@
 		</ul>
 	</div>
 
+	{# post content #}
 	<h2 class="no_margin">{{ post.title }}</h2>
 	<div id="blog_post_tags">
 		<p class="small no_margin left">Tags:</p>
@@ -52,31 +54,18 @@
 	<div id="blog_post_content">
 		{{ post.content | raw }}
 	</div>
+	
+	{# comments #}
 	<h3 class="no_margin clear">Kommentare</h3>
 	<hr class="no_margin"/>
 	<div id="blog_post_comment_new">
 		<p>Wenn du auch einen Kommentar schreiben möchtest, melde dich bitte <a href="{{ path('login') }}">hier</a> an.</p>
 	</div>
-	<div class="blog_post_comment">
-		<p class="blog_post_comment_header">Max Mustermann am 30.10.2011 um 19:05 Uhr (3 Antworten) | <a href="">Antworten ausblenden</a></p>
-		<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-		<div class="blog_post_comment blog_post_comment_answer">
-			<p class="blog_post_comment_header">Ulfi am 30.10.2011 um 19:10 Uhr (1 Antwort)</p>
-			<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-			<div class="blog_post_comment blog_post_comment_answer">
-				<p class="blog_post_comment_header">Max Mustermann am 30.10.2011 um 19:11 Uhr</p>
-				<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-			</div>
-		</div>
-		<div class="blog_post_comment blog_post_comment_answer">
-			<p class="blog_post_comment_header">Lotti am 30.10.2011 um 19:15 Uhr</p>
-			<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-		</div>
+	{% for comment in post.comments %}
+	<div id="comment_{{ comment.id }}" class="blog_post_comment">
+		{% include 'WebdevBlogBundle:Comment:comment.html.twig' with { 'comment': comment } %}
 	</div>
-	<div class="blog_post_comment">
-		<p class="blog_post_comment_header">Max Mustermann am 30.10.2011 um 19:05 Uhr (5 Antworten) | <a href="">Antworten einblenden</a></p>
-		<p class="blog_post_comment_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-	</div>
+	{% endfor %}
 
 {% endblock %}
 
@@ -94,4 +83,20 @@
 			
 	{% endstylesheets %}
 
+{% endblock %}
+
+{% block javascripts %}
+
+	{{ parent() }}
+	    
+	{% javascripts
+		'@WebdevBlogBundle/Resources/public/js/comment.js'
+		output='resources/compiled/view.js'
+		filter='yui_js'
+	%}
+	    	
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+	    	
+	{% endjavascripts %}
+	    
 {% endblock %}

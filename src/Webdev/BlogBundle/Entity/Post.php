@@ -73,8 +73,14 @@ class Post
     
     /**
      * @ORM\ManyToOne(targetEntity="Webdev\AppBundle\Entity\User", inversedBy="posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
+    
+    /**
+	 * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+     */
+    private $comments;
     
     public function __construct()
     {
@@ -82,6 +88,7 @@ class Post
     	$this->updated_at = new \DateTime();
     	$this->clicks = 0;
     	$this->tags = new ArrayCollection();
+    	$this->comments = new ArrayCollection();
     }
 
     /**
@@ -266,5 +273,25 @@ class Post
     {
         $this->user = $user;
         return $this;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param Webdev\BlogBundle\Entity\Comment $answers
+     */
+    public function addComment(\Webdev\BlogBundle\Entity\Comment $answers)
+    {
+        $this->answers[] = $answers;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

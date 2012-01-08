@@ -34,28 +34,39 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 		$factory = $this->container->get('security.encoder_factory');
 		
 		$user1 = new User();
-		$user1->setUsername('user');
+		$user1->setUsername('manuel');
 		
 		$encoder = $factory->getEncoder($user1);
-		$password = $encoder->encodePassword('userpass', $user1->getSalt());
+		$password = $encoder->encodePassword('manuel', $user1->getSalt());
 		
 		$user1->setPassword($password);
-		$user1->addRole($this->getReference('role1'));
+		$user1->addRole($this->getReference('role_user'));
 		
 		$user2 = new User();
-		$user2->setUsername('admin');
+		$user2->setUsername('max');
 		
-		$password = $encoder->encodePassword('adminpass', $user2->getSalt());
+		$encoder = $factory->getEncoder($user1);
+		$password = $encoder->encodePassword('max', $user1->getSalt());
 		
 		$user2->setPassword($password);
-		$user2->addRole($this->getReference('role2'));
+		$user2->addRole($this->getReference('role_user'));
+		
+		$admin = new User();
+		$admin->setUsername('admin');
+		
+		$password = $encoder->encodePassword('adminpass', $admin->getSalt());
+		
+		$admin->setPassword($password);
+		$admin->addRole($this->getReference('role_admin'));
 		
 		$manager->persist($user1);
 		$manager->persist($user2);
+		$manager->persist($admin);
 		
 		$manager->flush();
 		
-		$this->addReference('user1', $user1);
-		$this->addReference('user2', $user2);
+		$this->addReference('manuel', $user1);
+		$this->addReference('max', $user2);
+		$this->addReference('admin', $admin);
 	}
 }
